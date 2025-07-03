@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+
+Disallow: /images/*
+Disallow: /admin/*
+
+Allow: /index
+Allow: /logo.png
+Allow: /sitemap.xml
+
+User-agent: Googlebot-Mobile
+
+Disallow: /images/*
+Disallow: /admin/*
+
+Allow: /index
+Allow: /logo.png
+Allow: /sitemap.xml
