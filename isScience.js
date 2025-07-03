@@ -1,3 +1,4 @@
+//check timezone if mismatch compare two alt site latency and choose between which
 (async function checkScience() {
   try {
     const res = await fetch('https://ipapi.co/json/');
