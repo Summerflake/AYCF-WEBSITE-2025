@@ -1,0 +1,68 @@
+[
+  {
+    "title": "报到",
+    "lines": ["07:15 - 07:30", "华中操场"],
+    "image": "/static/assets/timeline/1.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "参与华中升旗礼",
+    "lines": ["07:30 - 08:00", "华中操场"],
+    "image": "/static/assets/timeline/2.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "大合照",
+    "lines": ["08:00 - 08:30", "钟楼"],
+    "image": "/static/assets/timeline/3.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "特邀讲座（二）",
+    "lines": ["08:30 - 10:00", "华中戏剧中心"],
+    "image": "/static/assets/timeline/4.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "茶叙",
+    "lines": ["10:00 - 10:30", "黄仲涵厅"],
+    "image": "/static/assets/timeline/5.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "学术讨论（二）",
+    "lines": ["10:30 - 12:30"],
+    "image": "/static/assets/timeline/6.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "午餐",
+    "lines": ["12:30 - 13:15", "黄仲涵厅"],
+    "image": "/static/assets/timeline/7.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "特邀讲座（三）",
+    "lines": ["13:15 - 14:45", "华中戏剧中心"],
+    "image": "/static/assets/timeline/8.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "驱车前往学习之旅地点",
+    "lines": ["14:45 - 15:30", "华中戏剧中心"],
+    "image": "/static/assets/timeline/9.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "学习之旅",
+    "lines": ["15:30 - 17:30", "校外"],
+    "image": "/static/assets/timeline/10.svg",
+    "color": "#37b24d"
+  },
+  {
+    "title": "联欢晚会节目准备",
+    "lines": ["17:30 - 18:00", "小组教室"],
+    "image": "/static/assets/timeline/11.svg",
+    "color": "#37b24d"
+  }
+]

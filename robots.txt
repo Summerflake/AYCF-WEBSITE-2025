@@ -1,20 +1,44 @@
 User-agent: *
 Disallow: /
 
+
 User-agent: Googlebot
 
-Disallow: /images/*
-Disallow: /admin/*
+Disallow: /.bin/
+Disallow: /static/css/
+Disallow: /static/fonts/
+Disallow: /static/js/
 
-Allow: /index
-Allow: /logo.png
+Allow: /index.html
+Allow: /static/assets/
+Allow: /timeline/
+Allow: /fenlunti.html
+Allow: /field_trip.html
+Allow: /jiabin.html
+Allow: /organising_team.html
+Allow: /resource.html
+Allow: /timeline.html
+Allow: /static/assets/hci.jpg
+Allow: /static/assets/hua-logo.jpg
 Allow: /sitemap.xml
+
 
 User-agent: Googlebot-Mobile
 
-Disallow: /images/*
-Disallow: /admin/*
+Disallow: /.bin/
+Disallow: /static/css/
+Disallow: /static/fonts/
+Disallow: /static/js/
 
-Allow: /index
-Allow: /logo.png
+Allow: /index.html
+Allow: /static/assets/
+Allow: /timeline/
+Allow: /fenlunti.html
+Allow: /field_trip.html
+Allow: /jiabin.html
+Allow: /organising_team.html
+Allow: /resource.html
+Allow: /timeline.html
+Allow: /static/assets/hci.jpg
+Allow: /static/assets/hua-logo.jpg
 Allow: /sitemap.xml

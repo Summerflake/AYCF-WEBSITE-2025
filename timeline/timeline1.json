@@ -1,0 +1,62 @@
+[
+  {
+    "title": "报到",
+    "lines": ["07:45 - 08:30", "钟楼、华中大会堂"],
+    "image": "/static/assets/timeline/1.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "开幕仪式",
+    "lines": ["08:30 - 09:00", "华中大会堂"],
+    "image": "/static/assets/timeline/2.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "主宾演讲与对话会",
+    "lines": ["09:00 - 10:30", "华中大会堂"],
+    "image": "/static/assets/timeline/3.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "茶叙",
+    "lines": ["10:30 - 11:00", "黄仲涵厅"],
+    "image": "/static/assets/timeline/4.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "破冰游戏",
+    "lines": ["11:00 - 11:45", "华中校园各处"],
+    "image": "/static/assets/timeline/5.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "校园导览 \n 拍摄小组照",
+    "lines": ["11:45 - 12:45", "华中校园各处"],
+    "image": "/static/assets/timeline/6.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "午餐",
+    "lines": ["12:45 - 13:30", "黄仲涵厅"],
+    "image": "/static/assets/timeline/7.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "学术讨论（一）",
+    "lines": ["13:30 - 15:30", "小组教室"],
+    "image": "/static/assets/timeline/8.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "特邀讲座（一）",
+    "lines": ["15:30 - 17:00", "华中戏剧中心"],
+    "image": "/static/assets/timeline/9.svg",
+    "color": "#0d6efd"
+  },
+  {
+    "title": "第一天学习心得总结",
+    "lines": ["17:00 - 18:00", "小组教室"],
+    "image": "/static/assets/timeline/10.svg",
+    "color": "#0d6efd"
+  }
+]

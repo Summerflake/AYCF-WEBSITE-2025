@@ -1,0 +1,80 @@
+[
+  {
+    "title": "报到",
+    "lines": ["07:30 - 08:00", "小组教室"],
+    "image": "/static/assets/timeline/1.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "“世代出击：行动中的我们” \n —— 学习之旅心得分享（准备）",
+    "lines": ["08:00 - 09:00", "小组教室"],
+    "image": "/static/assets/timeline/2.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "“世代出击：行动中的我们” \n —— 学习之旅心得分享（画廊漫步)",
+    "lines": ["09:00 - 10:00", "光前图书馆"],
+    "image": "/static/assets/timeline/3.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "茶叙",
+    "lines": ["10:00 - 10:30", "黄仲涵厅"],
+    "image": "/static/assets/timeline/4.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "学术讨论（三）",
+    "lines": ["10:30 - 12:00", "小组教室"],
+    "image": "/static/assets/timeline/5.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "午餐",
+    "lines": ["12:00 - 13:00", "黄仲涵厅"],
+    "image": "/static/assets/timeline/6.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "学术讨论（四）\n 准备议题呈现（彩排）",
+    "lines": ["13:00 - 14:00", "华中大会堂"],
+    "image": "/static/assets/timeline/7.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "议题呈现",
+    "lines": ["14:00 - 16:00", "华中大会堂"],
+    "image": "/static/assets/timeline/8.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "小休 - 茶点",
+    "lines": ["16:00 - 16:30", "华中大会堂"],
+    "image": "/static/assets/timeline/9.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "颁奖仪式",
+    "lines": ["16:30 - 17:00", "华中大会堂"],
+    "image": "/static/assets/timeline/10.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "副主席致辞（总结）\n 观赏论坛回顾视频",
+    "lines": ["17:00 - 17:30", "小组教室"],
+    "image": "/static/assets/timeline/11.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "晚餐",
+    "lines": ["17:30 - 18:30", "黄仲涵厅"],
+    "image": "/static/assets/timeline/12.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "联欢晚会",
+    "lines": ["18:30 - 20:00", "华中大会堂"],
+    "image": "/static/assets/timeline/13.svg",
+    "color": "#ff922b"
+  }
+]
