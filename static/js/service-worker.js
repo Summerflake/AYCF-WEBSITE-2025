@@ -1,13 +1,12 @@
-//service worker
+// Service Worker
+
 const CACHE_NAME = 'aycf-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/offline.html', // fallback
+  '/offline.html', // Fallback page when offline
 
-//include other filepaths
 ];
-
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -36,12 +35,26 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request).then((networkResponse) => {
-        return caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            // Optional: only cache GET requests
+            if (event.request.method === 'GET') {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+        .catch(() => {
+          // Return offline.html for navigation requests when offline
+          if (event.request.mode === 'navigate') {
+            return caches.match('/offline.html');
+          }
         });
-      });
     })
   );
 });
