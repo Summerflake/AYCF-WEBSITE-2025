@@ -1,16 +1,23 @@
 [
   {
     "title": "报到",
-    "lines": ["07:45 - 08:30", "钟楼、华中大会堂"],
+    "lines": ["07:00 - 07-20", "钟楼、华中操场"],
     "image": "/static/assets/timeline/1.svg",
     "color": "#0d6efd"
   },
   {
-    "title": "开幕仪式",
-    "lines": ["08:30 - 09:00", "华中大会堂"],
+    "title": "参与华中升旗礼",
+    "lines": ["07:20 - 08:00", "华中操场"],
     "image": "/static/assets/timeline/2.svg",
     "color": "#0d6efd"
   },
+  {
+    "title": "开幕式",
+    "lines": ["08:00 - 09:00", "华中大会堂"],
+    "image": "/static/assets/timeline/11.svg",
+    "color": "#0d6efd"
+  },
+
   {
     "title": "主宾演讲与对话会",
     "lines": ["09:00 - 10:30", "华中大会堂"],
@@ -48,7 +55,7 @@
     "color": "#0d6efd"
   },
   {
-    "title": "特邀讲座（一）",
+    "title": "特邀讲座（一）：艺术·个人·时代 \n 李邪老师",
     "lines": ["15:30 - 17:00", "华中戏剧中心"],
     "image": "/static/assets/timeline/9.svg",
     "color": "#0d6efd"

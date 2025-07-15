@@ -1,7 +1,13 @@
 [
   {
     "title": "报到",
-    "lines": ["07:30 - 08:00", "小组教室"],
+    "lines": ["07:15 - 07:30", "第四讲堂"],
+    "image": "/static/assets/timeline/1.svg",
+    "color": "#ff922b"
+  },
+  {
+    "title": "行政时间",
+    "lines": ["07:30 - 08:00", "第四讲堂"],
     "image": "/static/assets/timeline/1.svg",
     "color": "#ff922b"
   },
@@ -43,25 +49,25 @@
   },
   {
     "title": "议题呈现",
-    "lines": ["14:00 - 16:00", "华中大会堂"],
+    "lines": ["14:00 - 16:15", "华中大会堂"],
     "image": "/static/assets/timeline/8.svg",
     "color": "#ff922b"
   },
   {
     "title": "小休 - 茶点",
-    "lines": ["16:00 - 16:30", "华中大会堂"],
+    "lines": ["16:15 - 16:45", "华中大会堂"],
     "image": "/static/assets/timeline/9.svg",
     "color": "#ff922b"
   },
   {
     "title": "颁奖仪式",
-    "lines": ["16:30 - 17:00", "华中大会堂"],
+    "lines": ["16:45 - 17:15", "华中大会堂"],
     "image": "/static/assets/timeline/10.svg",
     "color": "#ff922b"
   },
   {
-    "title": "副主席致辞（总结）\n 观赏论坛回顾视频",
-    "lines": ["17:00 - 17:30", "小组教室"],
+    "title": "闭幕仪式",
+    "lines": ["17:15 - 17:30", "华中大会堂"],
     "image": "/static/assets/timeline/11.svg",
     "color": "#ff922b"
   },
@@ -73,7 +79,7 @@
   },
   {
     "title": "联欢晚会",
-    "lines": ["18:30 - 20:00", "华中大会堂"],
+    "lines": ["18:30 - 20:00", "嘉庚堂"],
     "image": "/static/assets/timeline/13.svg",
     "color": "#ff922b"
   }
