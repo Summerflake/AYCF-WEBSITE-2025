@@ -49,13 +49,13 @@
     "color": "#0d6efd"
   },
   {
-    "title": "学术讨论（一）",
+    "title": "学术讨论",
     "lines": ["13:30 - 15:30", "小组教室"],
     "image": "/static/assets/timeline/8.svg",
     "color": "#0d6efd"
   },
   {
-    "title": "特邀讲座（一）：艺术·个人·时代 \n 李邪老师",
+    "title": "特邀讲座：\n 艺术·个人·时代 \n 李邪老师",
     "lines": ["15:30 - 17:00", "华中戏剧中心"],
     "image": "/static/assets/timeline/9.svg",
     "color": "#0d6efd"

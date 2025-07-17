@@ -89,16 +89,20 @@
 
     .timeline-content {
       position: relative;
-      padding: 1rem;
+      /* padding: 1rem; */
       border-radius: 10px;
-      text-align: left;
+      /* text-align: left; */
       font-size: 1.25rem;
       /* Larger text */
       line-height: 1.6;
       /* Better readability */
-      max-width: 300px;
+      max-width: 400px;
       width: 100%;
       margin: 0 auto;
+    }
+
+    .timeline-content:nth-child(even) {
+      text-align: right;
     }
 
     .timeline-content h5 {
@@ -202,21 +206,27 @@
     }
   </style>
 
-  <section class="container my-5">
+  <section class="">
 
-    <div class="container py-5 position-relative">
-      <h2 class="fw-bold text-center mb-4 display-6">第一天</h2>
-      <div class="timeline" id="timeline-1" data-json="/timeline/timeline1.json"></div>
+    <div style="background-color: #e7f5ffc0;">
+      <div class="container py-5 position-relative">
+        <h2 class="fw-bold text-center mb-4 display-6">第一天</h2>
+        <div class="timeline" id="timeline-1" data-json="/timeline/timeline1.json"></div>
+      </div>
     </div>
 
-    <div class="container py-5 position-relative">
-      <h2 class="fw-bold text-center mb-4 display-6">第二天</h2>
-      <div class="timeline" id="timeline-2" data-json="/timeline/timeline2.json"></div>
+    <div style="background-color: #ebfbeec0;">
+      <div class="container py-5 position-relative">
+        <h2 class="fw-bold text-center mb-4 display-6">第二天</h2>
+        <div class="timeline" id="timeline-2" data-json="/timeline/timeline2.json"></div>
+      </div>
     </div>
 
-    <div class="container py-5 position-relative">
-      <h2 class="fw-bold text-center mb-4 display-6">第三天</h2>
-      <div class="timeline" id="timeline-3" data-json="/timeline/timeline3.json"></div>
+    <div style="background-color: #fff9dba4;">
+      <div class="container py-5 position-relative">
+        <h2 class="fw-bold text-center mb-4 display-6">第三天</h2>
+        <div class="timeline" id="timeline-3" data-json="/timeline/timeline3.json"></div>
+      </div>
     </div>
   </section>
 
