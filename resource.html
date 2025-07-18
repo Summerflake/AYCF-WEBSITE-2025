@@ -119,7 +119,7 @@
       }
 
       // Load PDF document
-      pdfjsLib.getDocument('https://src-inky-one.vercel.app/luggage.pdf').promise.then(pdf => {
+      pdfjsLib.getDocument('/static/assets/packing_list.pdf').promise.then(pdf => {
         pdfDoc = pdf;
         renderPage(1);
       });
