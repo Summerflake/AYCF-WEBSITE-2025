@@ -25,3 +25,19 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+function clearCache(){
+  if ('caches' in window) {
+  caches.keys().then(cacheNames => {
+    return Promise.all(
+      cacheNames.map(cacheName => caches.delete(cacheName))
+    );
+  }).then(() => {
+    console.log('All caches deleted.');
+  }).catch(err => {
+    console.error('Error deleting caches:', err);
+  });
+} else {
+  console.log('Cache API not supported in this browser.');
+}
+}
