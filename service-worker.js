@@ -1,5 +1,5 @@
 // Name of the cache
-const CACHE_NAME = 'aycf-cache-v1';
+const CACHE_NAME = 'aycf-cache-v2';
 
 // Files to cache during install
 const urlsToCache = [
@@ -110,7 +110,7 @@ self.addEventListener('fetch', (event) => {
         return cachedResponse;
       }
 
-      return fetch(event.request)
+      return fetch(event.request, { redirect: 'follow' })
         .then((networkResponse) => {
           // Only cache valid GET responses
           if (!networkResponse || networkResponse.status !== 200 || event.request.method !== 'GET') {
@@ -131,7 +131,7 @@ self.addEventListener('fetch', (event) => {
             return caches.match('/offline.html');
           }
 
-          // For other failures (e.g. images), return nothing to prevent "canceled" errors
+          // For other failures (e.g. images), return an empty response to avoid errors
           return new Response('', {
             status: 503,
             statusText: 'Service Unavailable'
