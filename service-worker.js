@@ -79,6 +79,8 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[Service Worker] Caching assets...');
       return cache.addAll(urlsToCache);
+    }).catch((err) => {
+      console.error('[Service Worker] Error during cache install:', err);
     })
   );
 });
@@ -100,7 +102,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Serve from cache, fallback to network, then to offline.html if needed
+// Fetch: Serve from cache → fallback to network → fallback to offline page
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
@@ -110,21 +112,30 @@ self.addEventListener('fetch', (event) => {
 
       return fetch(event.request)
         .then((networkResponse) => {
+          // Only cache valid GET responses
           if (!networkResponse || networkResponse.status !== 200 || event.request.method !== 'GET') {
             return networkResponse;
           }
 
-          // Clone and cache the new response
+          // Cache the new response
           return caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, networkResponse.clone());
             return networkResponse;
           });
         })
-        .catch(() => {
-          // If request is a navigation (e.g., user trying to load a page), return offline fallback
+        .catch((error) => {
+          console.warn('[Service Worker] Fetch failed:', event.request.url, error);
+
+          // Fallback for navigational requests
           if (event.request.mode === 'navigate') {
             return caches.match('/offline.html');
           }
+
+          // For other failures (e.g. images), return nothing to prevent "canceled" errors
+          return new Response('', {
+            status: 503,
+            statusText: 'Service Unavailable'
+          });
         });
     })
   );
