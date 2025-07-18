@@ -37,7 +37,7 @@ function clearCache(){
   }).catch(err => {
     console.error('Error deleting caches:', err);
   });
-} else {
-  console.log('Cache API not supported in this browser.');
-}
+  } else {
+    console.log('Cache API not supported in this browser.');
+  }
 }
