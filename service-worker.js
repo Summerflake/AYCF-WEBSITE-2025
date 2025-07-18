@@ -1,7 +1,4 @@
-// Name of the cache
-const CACHE_NAME = 'aycf-cache-v2';
-
-// Files to cache during install
+const CACHE_NAME = 'aycf-c-v1';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -73,70 +70,60 @@ const urlsToCache = [
   'static/assets/timeline/17.svg'
 ];
 
-// Install: Pre-cache assets
-self.addEventListener('install', (event) => {
+// Install event - cache files
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Caching assets...');
-      return cache.addAll(urlsToCache);
-    }).catch((err) => {
-      console.error('[Service Worker] Error during cache install:', err);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache);
+      })
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate: Clean up old caches
-self.addEventListener('activate', (event) => {
-  const whitelist = [CACHE_NAME];
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!whitelist.includes(cacheName)) {
-            console.log('[Service Worker] Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
+    caches.keys()
+      .then(cacheNames => 
+        Promise.all(
+          cacheNames.filter(name => name !== CACHE_NAME)
+            .map(name => caches.delete(name))
+        )
       )
-    )
+      .then(() => self.clients.claim())
   );
 });
 
-// Fetch: Serve from cache → fallback to network → fallback to offline page
-self.addEventListener('fetch', (event) => {
+// Fetch event - serve from cache if available, else fetch from network
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(event.request, { redirect: 'follow' })
-        .then((networkResponse) => {
-          // Only cache valid GET responses
-          if (!networkResponse || networkResponse.status !== 200 || event.request.method !== 'GET') {
+    caches.match(event.request)
+      .then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse; // return cached file
+        }
+        // fetch from network and cache new response for future
+        return fetch(event.request).then(networkResponse => {
+          // Check for valid response
+          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
             return networkResponse;
           }
 
-          // Cache the new response
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-        .catch((error) => {
-          console.warn('[Service Worker] Fetch failed:', event.request.url, error);
+          // Clone response to cache
+          const responseToCache = networkResponse.clone();
 
-          // Fallback for navigational requests
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+          });
+
+          return networkResponse;
+        }).catch(() => {
+          // fallback to offline.html for navigation requests if offline
           if (event.request.mode === 'navigate') {
             return caches.match('/offline.html');
           }
-
-          // For other failures (e.g. images), return an empty response to avoid errors
-          return new Response('', {
-            status: 503,
-            statusText: 'Service Unavailable'
-          });
         });
-    })
+      })
   );
 });
