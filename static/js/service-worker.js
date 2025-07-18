@@ -1,10 +1,13 @@
-// Service Worker
-
+// Name of the cache
 const CACHE_NAME = 'aycf-cache-v1';
+
+// Files to cache during install
 const urlsToCache = [
   '/',
   '/index.html',
-  '/offline.html', // fallback
+  '/offline.html',
+
+  // HTML Pages
   'fenlunti.html',
   'field_trip.html',
   'jiaban.html',
@@ -14,23 +17,24 @@ const urlsToCache = [
   'robots.txt',
   'sitemap.xml',
 
-  // TIMELINE JSON FILES
+  // JSON Timeline Files
   'timeline/timeline1.json',
   'timeline/timeline2.json',
   'timeline/timeline3.json',
 
-  // STATIC FILES
-
+  // CSS & Fonts
   'static/css/bootstrap.css',
   'static/css/bootstrap.min.map',
   'static/css/style.css',
   'static/fonts/font.css',
+
+  // JS
   'static/js/bootstrap.bundle.min.js',
   'static/js/boostrap.bundle.min.js.map',
   'static/js/script.js',
   'static/js/service-worker.js',
 
-  // IMAGES
+  // General Images
   'static/assets/admin.jpg',
   'static/assets/clocktower.jpg',
   'static/assets/concepts.jpg',
@@ -49,7 +53,7 @@ const urlsToCache = [
   'static/assets/sutd.jpg',
   'static/assets/theme_logo.jpg',
 
-  // TIMELINE IMAGES
+  // Timeline Images
   'static/assets/timeline/1.svg',
   'static/assets/timeline/2.svg',
   'static/assets/timeline/3.svg',
@@ -67,34 +71,36 @@ const urlsToCache = [
   'static/assets/timeline/15.svg',
   'static/assets/timeline/16.svg',
   'static/assets/timeline/17.svg'
-
-//include other filepaths
 ];
 
+// Install: Pre-cache assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Service Worker: Caching files');
+      console.log('[Service Worker] Caching assets...');
       return cache.addAll(urlsToCache);
     })
   );
 });
 
+// Activate: Clean up old caches
 self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME];
+  const whitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
+          if (!whitelist.includes(cacheName)) {
+            console.log('[Service Worker] Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
-      );
-    })
+      )
+    )
   );
 });
 
+// Fetch: Serve from cache, fallback to network, then to offline.html if needed
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
@@ -104,16 +110,18 @@ self.addEventListener('fetch', (event) => {
 
       return fetch(event.request)
         .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200 || event.request.method !== 'GET') {
+            return networkResponse;
+          }
+
+          // Clone and cache the new response
           return caches.open(CACHE_NAME).then((cache) => {
-            // Optional: only cache GET requests
-            if (event.request.method === 'GET') {
-              cache.put(event.request, networkResponse.clone());
-            }
+            cache.put(event.request, networkResponse.clone());
             return networkResponse;
           });
         })
         .catch(() => {
-          // Return offline.html for navigation requests when offline
+          // If request is a navigation (e.g., user trying to load a page), return offline fallback
           if (event.request.mode === 'navigate') {
             return caches.match('/offline.html');
           }
