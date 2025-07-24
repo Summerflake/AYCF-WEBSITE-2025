@@ -43,31 +43,31 @@
   },
   {
     "title": "学术讨论（四）\n 准备议题呈现（彩排）",
-    "lines": ["13:00 - 14:00", "华中大会堂"],
+    "lines": ["13:00 - 14:00", "中学部会堂"],
     "image": "/static/assets/timeline/8.svg",
     "color": "#ff922b"
   },
   {
     "title": "议题呈现",
-    "lines": ["14:00 - 16:15", "华中大会堂"],
+    "lines": ["14:00 - 16:15", "中学部会堂"],
     "image": "/static/assets/timeline/9.svg",
     "color": "#ff922b"
   },
   {
     "title": "小休 - 茶点",
-    "lines": ["16:15 - 16:45", "华中大会堂"],
+    "lines": ["16:15 - 16:45", "中学部会堂"],
     "image": "/static/assets/timeline/10.svg",
     "color": "#ff922b"
   },
   {
     "title": "颁奖仪式",
-    "lines": ["16:45 - 17:15", "华中大会堂"],
+    "lines": ["16:45 - 17:15", "中学部会堂"],
     "image": "/static/assets/timeline/11.svg",
     "color": "#ff922b"
   },
   {
     "title": "闭幕仪式",
-    "lines": ["17:15 - 17:30", "华中大会堂"],
+    "lines": ["17:15 - 17:30", "中学部会堂"],
     "image": "/static/assets/timeline/12.svg",
     "color": "#ff922b"
   },

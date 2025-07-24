@@ -13,14 +13,14 @@
   },
   {
     "title": "开幕式",
-    "lines": ["08:00 - 09:00", "华中大会堂"],
+    "lines": ["08:00 - 09:00", "中学部会堂"],
     "image": "/static/assets/timeline/11.svg",
     "color": "#0d6efd"
   },
 
   {
     "title": "主宾演讲与对话会",
-    "lines": ["09:00 - 10:30", "华中大会堂"],
+    "lines": ["09:00 - 10:30", "中学部会堂"],
     "image": "/static/assets/timeline/3.svg",
     "color": "#0d6efd"
   },
