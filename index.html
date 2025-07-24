@@ -62,24 +62,30 @@
   <main>
 
     <style>
-      /* .hero-section {
-        background: url("/static/assets/clocktower.jpg") no-repeat center center;
-        background-size: cover;
-        height: 100vh;
-        color: white;
-      } */
-
       .hero-section {
-        background: url("/static/assets/tower.jpg") no-repeat center center;
-        background-size: cover;
+        position: relative;
         height: 100vh;
+        overflow: hidden;
         color: white;
-        z-index: -999;
-        opacity: 0.65;
       }
 
+      /* This is the background image with 65% opacity */
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("/static/assets/tower.jpg") no-repeat center center;
+        background-size: cover;
+        opacity: 0.65;
+        z-index: 0;
+      }
+
+      /* Content container */
       .hero-overlay {
-        /* background-color: rgba(0, 0, 0, 0.4); */
+        position: relative;
+        z-index: 1;
         height: 100%;
         display: flex;
         align-items: center;
@@ -88,6 +94,7 @@
         padding: 0 1rem;
       }
 
+      /* Text and button styles */
       .hero-text h1 {
         font-size: 4rem;
         font-weight: 700;
@@ -111,6 +118,7 @@
         z-index: 2;
       }
 
+      /* Responsive tweaks */
       @media (max-width: 576px) {
         .hero-text h1 {
           font-size: 2.5rem;
@@ -122,22 +130,37 @@
       }
     </style>
 
+    <!-- new banner -->
     <section>
+      <div class="hero-section">
+        <div class="hero-bg"></div> <!-- Background layer with 65% opacity -->
+        <div class="hero-overlay">
+          <div class="hero-text">
+            <img class="hero-text-image" src="static/assets/aycf_special_font.png" alt="">
+            <br>
+            <!-- <h1>
+          <span>2025</span>
+          <span>亚洲青年华语论坛</span>
+        </h1> -->
+            <a href="#intro" class="btn btn-outline-light mt-4">了解更多</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- <section>
       <div class="hero-section">
         <div class="hero-overlay">
           <div class="hero-text">
 
             <img class="hero-text-image" src="static/assets/aycf_special_font.png" alt="">
             <br>
-            <!-- <h1>
-              <span>2025</span>
-              <span>亚洲青年华语论坛</span>
-            </h1> -->
             <a href="#intro" class="btn btn-outline-light mt-4">了解更多</a>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="py-3 py-md-5">
       <div class="container mb-5">
