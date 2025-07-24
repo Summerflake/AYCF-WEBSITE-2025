@@ -1,1 +1,1 @@
-Created with ❤️ by @Summerflake and @ttiramisu
+Created with ❤️ by [@Summerflake](https://github.com/Summerflake/) and [@ttiramisu](https://github.com/ttiramisu)
