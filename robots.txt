@@ -4,7 +4,6 @@ Disallow: /
 
 User-agent: Googlebot
 
-Disallow: /.bin/
 Disallow: /static/css/
 Disallow: /static/fonts/
 Disallow: /static/js/
@@ -25,7 +24,6 @@ Allow: /sitemap.xml
 
 User-agent: Googlebot-Mobile
 
-Disallow: /.bin/
 Disallow: /static/css/
 Disallow: /static/fonts/
 Disallow: /static/js/
