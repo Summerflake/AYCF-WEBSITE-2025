@@ -1,7 +1,7 @@
 [
   {
     "title": "报到",
-    "lines": ["07:00 - 07-20", "钟楼、华中操场"],
+    "lines": ["07:00 - 07-20", "钟楼"],
     "image": "/static/assets/timeline/1.svg",
     "color": "#0d6efd"
   },
@@ -12,7 +12,7 @@
     "color": "#0d6efd"
   },
   {
-    "title": "开幕式",
+    "title": "开幕仪式",
     "lines": ["08:00 - 09:00", "中学部会堂"],
     "image": "/static/assets/timeline/11.svg",
     "color": "#0d6efd"
