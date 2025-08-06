@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相册 - 2025 亚洲青年华语论坛</title>
+
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/fonts/font.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    .folder-title {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .photo-thumb {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border: 1px solid #ddd;
+    }
+
+    .photo-box {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
+  <script src="/static/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const res = await fetch('/photos/data/photos.json');
+      const data = await res.json();
+      const container = document.getElementById('album-container');
+
+      for (const folderName in data.folders) {
+        const section = document.createElement('section');
+        section.className = 'mb-5';
+
+        const title = document.createElement('h2');
+        title.className = 'folder-title';
+        title.textContent = folderName;
+        section.appendChild(title);
+
+        const row = document.createElement('div');
+        row.className = 'row';
+
+        data.folders[folderName].forEach(photo => {
+          const col = document.createElement('div');
+          col.className = 'col-sm-6 col-md-4 col-lg-3 photo-box';
+
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          const img = document.createElement('img');
+          img.src = `/photos/lowres/${photo}`;
+          img.alt = photo;
+          img.className = 'card-img-top photo-thumb';
+
+          const cardBody = document.createElement('div');
+          cardBody.className = 'card-body';
+
+          const btnGroup = document.createElement('div');
+          btnGroup.className = 'd-flex justify-content-between';
+
+          const downloadBtn = document.createElement('a');
+          downloadBtn.href = `/photos/capped/${photo}`;
+          downloadBtn.className = 'btn btn-sm btn-primary';
+          downloadBtn.download = photo;
+          downloadBtn.textContent = '下载';
+
+          const secretBtn = document.createElement('a');
+          secretBtn.href = `/photos/original/${photo}`;
+          secretBtn.className = 'btn btn-sm btn-outline-secondary';
+          secretBtn.textContent = '高清';
+          secretBtn.style.display = 'none'; // Backdoor
+
+          btnGroup.appendChild(downloadBtn);
+          btnGroup.appendChild(secretBtn);
+          cardBody.appendChild(btnGroup);
+
+          card.appendChild(img);
+          card.appendChild(cardBody);
+          col.appendChild(card);
+          row.appendChild(col);
+        });
+
+        section.appendChild(row);
+        container.appendChild(section);
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="static/assets/hua-logo.png" alt="Logo" width="auto" height="32px"
+            class="d-inline-block align-text-top">
+          2025 亚洲青年华语论坛
+        </a>
+        <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/timeline.html">活动流程</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                论坛介绍
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/fenlunti.html">分论题介绍</a></li>
+                <li><a class="dropdown-item" href="/jiabin.html">嘉宾</a></li>
+                <li><a class="dropdown-item" href="/organising_team.html">筹委会</a></li>
+                <li><a class="dropdown-item" href="/field_trip.html">学习之旅</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/resource.html">资源中心</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <main class="container my-5" id="album-container">
+    <h1 class="mb-4">论坛相册</h1>
+    <!-- Dynamic album folders will be rendered here -->
+  </main>
+
+  <div class="container">
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 border-top">
+      <div class="col mb-3">
+        <!-- Logos side by side -->
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <!-- School Logo -->
+          <a href="https://hci.edu.sg" aria-label="Hwa Chong Institution">
+            <img src="/static/assets/hci.jpg" alt="HCI Logo" height="100">
+          </a>
+
+          <!-- Event Logo -->
+          <a href="/" aria-label="AYCF Event">
+            <img src="/static/assets/hua-logo.png" alt="AYCF Logo" height="80">
+          </a>
+        </div>
+
+        <p class="text-body-secondary">© HCI 2025</p>
+      </div>
+
+      <div class="col mb-3"></div>
+      <div class="col mb-3">
+        <h5>联系我们</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary"
+              href="https://www.instagram.com/hci.aycf/">IG:<br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+              </svg> @hci.aycf</a></li>
+
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary"
+              href="mailto:aycf@hci.edu.sg">AYCF电邮:<br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-envelope-open" viewBox="0 0 16 16">
+                <path
+                  d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
+              </svg>
+              aycf@hci.edu.sg</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="mailto:admin@hci.edu.sg">华中电邮:<br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-envelope-open" viewBox="0 0 16 16">
+                <path
+                  d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
+              </svg>
+              admin@hci.edu.sg</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="tel:+6564683955">华中电话号码:<br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone"
+                viewBox="0 0 16 16">
+                <path
+                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+              </svg>
+              +65 6468 3955</a></li>
+        </ul>
+      </div>
+      <div class="col mb-3">
+        <h5>地址</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="https://hci.edu.sg">Hwa Chong
+              Institution 661 Bukit Timah
+              Road</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="https://hci.edu.sg">Singapore
+              S(269734)</a></li>
+        </ul>
+      </div>
+      <div class="col mb-3">
+        <h5>链接</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="/about.html">关于AYCF</a>
+          </li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="/timeline.html">活动流程</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="/fenlunti.html">论坛介绍</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-body-secondary" href="/resource.html">资源中心</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
